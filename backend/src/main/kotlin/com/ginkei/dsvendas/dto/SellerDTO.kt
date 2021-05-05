@@ -7,5 +7,5 @@ data class SellerDTO(
     val id: Long?,
     val name: String?
 ) : Serializable {
-    constructor(seller: Seller) : this(seller.id, seller.name)
+    constructor(entity: Seller) : this(entity.id, entity.name)
 }
