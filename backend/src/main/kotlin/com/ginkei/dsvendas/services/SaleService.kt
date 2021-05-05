@@ -1,6 +1,8 @@
 package com.ginkei.dsvendas.services
 
 import com.ginkei.dsvendas.dto.SaleDTO
+import com.ginkei.dsvendas.dto.SaleSuccessDTO
+import com.ginkei.dsvendas.dto.SaleSumDTO
 import com.ginkei.dsvendas.repositories.SaleRepository
 import com.ginkei.dsvendas.repositories.SellerRepository
 import org.springframework.beans.factory.annotation.Autowired
@@ -23,4 +25,11 @@ class SaleService {
         sellerRepository.findAll()
         return repository.findAll(pageable).map { sale -> SaleDTO(sale) }
     }
+
+    @Transactional(readOnly = true)
+    fun amountGroupedBySeller(): List<SaleSumDTO> = repository.amountGroupedBySeller()
+
+    @Transactional(readOnly = true)
+    fun successGroupedBySeller(): List<SaleSuccessDTO> = repository.successGroupedBySeller()
+
 }

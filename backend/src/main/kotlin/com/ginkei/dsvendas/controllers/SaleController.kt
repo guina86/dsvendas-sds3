@@ -1,6 +1,8 @@
 package com.ginkei.dsvendas.controllers
 
 import com.ginkei.dsvendas.dto.SaleDTO
+import com.ginkei.dsvendas.dto.SaleSuccessDTO
+import com.ginkei.dsvendas.dto.SaleSumDTO
 import com.ginkei.dsvendas.dto.SellerDTO
 import com.ginkei.dsvendas.services.SaleService
 import com.ginkei.dsvendas.services.SellerService
@@ -25,5 +27,16 @@ class SaleController {
         return ResponseEntity.ok(list)
     }
 
+    @GetMapping(value = ["/amount-by-seller"])
+    fun amountGrouperBySeller() : ResponseEntity<List<SaleSumDTO>> {
+        val list = service.amountGroupedBySeller()
+        return ResponseEntity.ok(list)
+    }
+
+    @GetMapping(value = ["/success-by-seller"])
+    fun successGrouperBySeller() : ResponseEntity<List<SaleSuccessDTO>> {
+        val list = service.successGroupedBySeller()
+        return ResponseEntity.ok(list)
+    }
 
 }
