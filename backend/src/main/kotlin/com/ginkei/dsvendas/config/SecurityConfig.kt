@@ -11,6 +11,7 @@ import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.web.cors.CorsConfiguration
 import org.springframework.web.cors.CorsConfigurationSource
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource
+import java.util.*
 
 
 @Configuration
@@ -18,11 +19,11 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 class SecurityConfig : WebSecurityConfigurerAdapter() {
 
     @Autowired
-   lateinit var env: Environment
+    lateinit var env: Environment
 
     @Throws(Exception::class)
     override fun configure(http: HttpSecurity) {
-        if (listOf(env.activeProfiles).contains("test")) {
+        if (env.activeProfiles.contains("test")) {
             http.headers().frameOptions().disable()
         }
         http.cors().and().csrf().disable()
