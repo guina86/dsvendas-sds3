@@ -3,16 +3,18 @@ import Home from "pages/Home"
 import Dashboard from "pages/Dashboard"
 
 const Routes = () => {
-  return <Router>
+  return (
+    <Router>
       <Switch>
-          <Route path="/" exact>
-              <Home />
-          </Route>
-          <Route path="/dashboard" exact>
-              <Dashboard />
-          </Route>
+        <Route path="/" exact>
+          <Home />
+        </Route>
+        <Route path="/dashboard" exact>
+          <Dashboard />
+        </Route>
       </Switch>
-  </Router>
+    </Router>
+  )
 }
 
 export default Routes
